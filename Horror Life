@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scary Horror Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game-container">
+        <!-- Game content will be dynamically added here -->
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
+// Define variables for game state
+let currentRoom = 1;
+
+// Function to initialize the game
+function initGame() {
+    displayRoom(currentRoom);
+}
+
+// Function to display a room
+function displayRoom(roomNumber) {
+    // Clear previous content
+    document.getElementById('game-container').innerHTML = '';
+
+    // Display room content dynamically based on roomNumber
+    switch (roomNumber) {
+        case 1:
+            document.getElementById('game-container').innerHTML = `
+                <h1>Room 1</h1>
+                <p>Welcome to Room 1. It's dark and eerie...</p>
+                <button onclick="enterRoom(2)">Enter Room 2</button>
+            `;
+            break;
+        case 2:
+            document.getElementById('game-container').innerHTML = `
+                <h1>Room 2</h1>
+                <p>This room seems even darker...</p>
+                <button onclick="enterRoom(1)">Go Back to Room 1</button>
+            `;
+            break;
+        // Add more cases for additional rooms
+        default:
+            break;
+    }
+}
+
+// Function to move to a different room
+function enterRoom(roomNumber) {
+    currentRoom = roomNumber;
+    displayRoom(currentRoom);
+}
+
+// Call initGame to start the game
+initGame();
